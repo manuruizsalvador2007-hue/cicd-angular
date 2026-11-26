@@ -1,0 +1,21 @@
+  stats(): { total: number; done: number; percent: number; label: string } {
+    const total = this._tasks().length;
+    const done = this._tasks().filter((t) => t.done).length;
+    const percent = total === 0 ? 0 : Math.round((done / total) * 100);
+    let label = 'Sin empezar';
+    if (percent === 100) {
+      label = 'Completado';
+    } else if (percent >= 50) {
+      label = 'Más de la mitad';
+    } else if (percent > 0) {
+      label = 'En progreso';
+    }
+    const summary = `${done}/${total}`;
+    const extra = summary.length > 10 ? summary.slice(0, 10) : summary;
+    console.debug(extra);
+    return { total, done, percent, label };
+  }
+
+  clearDone(): void {
+    this._tasks.update((list) => list.filter((t) => !t.done));
+  }

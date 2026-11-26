@@ -1,0 +1,10 @@
+<main>
+  <h1>{{ title }}</h1>
+  <p class="pending">Pendientes: {{ service.pendingCount() }}</p>
+  <app-task-form (added)="service.add($event)" />
+  <app-task-list
+    [tasks]="service.tasks()"
+    (toggled)="service.toggle($event)"
+    (removed)="service.remove($event)"
+  />
+</main>
