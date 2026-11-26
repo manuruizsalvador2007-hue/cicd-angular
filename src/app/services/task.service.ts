@@ -31,4 +31,27 @@ export class TaskService {
   remove(id: number): void {
     this._tasks.update((list) => list.filter((t) => t.id !== id));
   }
+
+  doneCount(): number {
+    return this._tasks().filter((t) => t.done).length;
+  }
+
+  stats(): { total: number; done: number; percent: number; label: string } {
+    const total = this._tasks().length;
+    const done = this.doneCount();
+    const percent = total === 0 ? 0 : Math.round((done / total) * 100);
+    let label = 'Sin empezar';
+    if (percent === 100) {
+      label = 'Completado';
+    } else if (percent >= 50) {
+      label = 'Mas de la mitad';
+    } else if (percent > 0) {
+      label = 'En progreso';
+    }
+    return { total, done, percent, label };
+  }
+
+  clearDone(): void {
+    this._tasks.update((list) => list.filter((t) => !t.done));
+  }
 }
