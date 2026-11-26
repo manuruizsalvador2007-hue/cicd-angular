@@ -10,7 +10,7 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     const el: HTMLElement = fixture.nativeElement;
     await fixture.whenStable();
-    expect(el.querySelector('h1')?.textContent).toContain('Lista de tareas CI/CD');
+    expect(el.querySelector('h1')?.textContent).toContain('Lista de tareas de Manuel');
 
     const input = el.querySelector('input')!;
     input.value = 'Probar la app';
