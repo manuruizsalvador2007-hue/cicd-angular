@@ -12,4 +12,5 @@ import { TaskList } from './components/task-list/task-list';
 export class App {
   protected readonly service = inject(TaskService);
   protected readonly title = 'Lista de tareas CI/CD';
+  protected readonly roto = variableQueNoExiste;
 }
